@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <link href = "./style.css" rel = "stylesheet">
+    <title>Лабораторна робота №4</title>
+</head>
+<body>
+    <main>
+        <div class = "row">
+            <div class='buy col-md-6' ng-controller='buycontroller as bc'>
+                <h2>Продукти в наявності</h2>
+                <div ng-if="bc.tobuyitems.length == 0">
+                    Продуктів більше нема :(
+                </div>
+                <div class='item-list'>
+                    <div class="item-name">
+                        <div ng-repeat="item in bc.tobuyitems">
+                            {{ item.name }}
+                        </div>
+                    </div>
+                    <div class="item-amount">
+                        <div ng-repeat="item in bc.tobuyitems">
+                            {{ item.amount }}
+                        </div>
+                    </div>
+                    <div class="item-button">
+                        <div ng-repeat="item in bc.tobuyitems">
+                            <button ng-click="bc.addtobought($index)">Купити</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='bought col-md-6' ng-controller='boughtcontroller as btc'>
+                <h2>Куплені продукти</h2>
+                <div ng-if="btc.boughtItems.length == 0">
+                    Нема куплених продуктів
+                </div>
+                <div class='item-list'>
+                    <div class="item-name">
+                        <div ng-repeat="item in btc.boughtItems">
+                            {{ item.name }}
+                        </div>
+                    </div>
+                    <div class="item-amount">
+                        <div ng-repeat="item in btc.boughtItems">
+                            {{ item.amount }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="./app.js"  type="text/javascript" ></script>
+</body>
+</html>
